@@ -7,6 +7,8 @@ For example:
 ```javascript
 var controller = require('hapi-ember-mongoose-controller');
 
-var PostController = controller(Post);
+var PostController = controller({
+  model: Post
+});
 
 ```

@@ -1,17 +1,19 @@
-module.exports = function(model) {
+module.exports = function(object) {
+
+  var name = object.model.modelName;
 
   return {
 
     index: function(request, reply) {
 
-      model
+      object.model
         .find()
         .exec(function(err, models){
           var response = {};
 
           if(err) reply(err);
 
-          response[model.modelName + 's'] = models
+          response[name + 's'] = models
 
           reply(response);
 
@@ -20,14 +22,14 @@ module.exports = function(model) {
     },
 
     show: function(request, reply) {
-      model
+      object.model
         .find({_id: request.params.id})
         .exec(function(err, model){
           var response = {};
 
           if(err) reply(err);
 
-          response[model.modelName] = model;
+          response[name] = model;
 
           reply(response);
       });
@@ -36,14 +38,14 @@ module.exports = function(model) {
 
     create: function(request, reply) {
 
-      var data = request.payload[model.modelName];
+      var data = request.payload[name];
 
-      model.create(data, function(err, model){
+      object.model.create(data, function(err, model){
         var response = {};
 
         if(err) reply(err);
 
-        response[model.modelName] = model;
+        response[name] = model;
 
         reply(response);
 
@@ -52,16 +54,16 @@ module.exports = function(model) {
 
     update: function(request, reply) {
 
-      var data = request.payload[model.modelName];
+      var data = request.payload[name];
 
-      model
+      object.model
         .update({_id: request.params.id}, { $set: data })
         .exec(function(err, model){
           var response = {};
 
           if(err) reply(err);
 
-          response[model.modelName] = model;
+          response[name] = model;
 
           reply(response);
 
@@ -70,13 +72,13 @@ module.exports = function(model) {
     },
 
     destroy: function(request, reply) {
-      model
+      object.model
         .remove({_id: request.params.id})
         .exec(function(err, model){
 
         if(err) reply(err);
 
-        reply(model.modelName + " has been deleted");
+        reply(name + " has been deleted");
       });
     }
 
