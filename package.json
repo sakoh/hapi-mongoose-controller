@@ -1,6 +1,6 @@
 {
   "name": "hapi-ember-mongoose-controller",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A reusable controller module for CRUD operations between Hapi.js, Mongoose, and Ember Data",
   "main": "index.js",
   "scripts": {

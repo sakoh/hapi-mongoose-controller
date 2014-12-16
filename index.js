@@ -1,6 +1,6 @@
 module.exports = function(object) {
 
-  var name = object.model.modelName;
+  var name = object.model.modelName.toLowerCase();
 
   return {
 
