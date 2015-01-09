@@ -1,6 +1,10 @@
+var _ = require('underscore');
+
 module.exports = function(object) {
 
   var name = object.model.modelName.toLowerCase();
+
+  var emberize = object.emberize ? object.emberize : false;
 
   return {
 
@@ -13,7 +17,10 @@ module.exports = function(object) {
 
           if(err) reply(err);
 
-          response[name + 's'] = models
+          if(emberize)
+            response[name + 's'] = models;
+          else
+            response = models;
 
           reply(response);
 
@@ -29,7 +36,10 @@ module.exports = function(object) {
 
           if(err) reply(err);
 
-          response[name] = model;
+          if(emberize)
+            response[name] = model;
+          else
+            response = model;
 
           reply(response);
       });
@@ -45,7 +55,10 @@ module.exports = function(object) {
 
         if(err) reply(err);
 
-        response[name] = model;
+        if(emberize)
+          response[name] = model;
+        else
+          response = model;
 
         reply(response);
 
@@ -63,7 +76,10 @@ module.exports = function(object) {
 
           if(err) reply(err);
 
-          response[name] = model;
+          if(emberize)
+            response[name] = model;
+          else
+            response = model;
 
           reply(response);
 
