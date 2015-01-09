@@ -1,6 +1,6 @@
 {
   "name": "hapi-mongoose-controller",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A reusable API controller module for CRUD operations between Hapi.js and Mongoose",
   "main": "index.js",
   "scripts": {
