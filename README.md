@@ -5,7 +5,7 @@ A reusable controller module for CRUD operations between Hapi.js and Ember Data
 For example:
 
 ```javascript
-var controller = require('hapi-ember-mongoose-controller');
+var controller = require('hapi-mongoose-controller');
 
 var PostController = controller({
   model: Post
