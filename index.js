@@ -1,5 +1,3 @@
-var _ = require('underscore');
-
 module.exports = function(object) {
 
   var name = object.model.modelName.toLowerCase();
